@@ -1,0 +1,24 @@
+#Creation of Pods using ReplicaSet
+apiVersion: apps/v1
+kind: ReplicaSet   #type of controller
+metadata:
+  name: frontend
+  labels:
+    app: guestbook
+    tier: frontend
+spec:
+  # modify replicas according to your case
+  replicas: 3   #Number of replicas or containers to be created
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:   #this is the spec of container, we have seen in Pod template
+      containers:
+        - name: php-redis
+          image: nginx
+
+

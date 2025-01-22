@@ -10,6 +10,7 @@ spec:
       ports:
         - containerPort: 80
 --- #kubernetes will understand --- as different config file
+#Multi container Pod creation
 apiVersion: v1
 kind: Pod
 metadata:
