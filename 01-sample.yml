@@ -1,11 +1,24 @@
-apiVersion: v1
-kind: Pod
+#Kubernetes Pod Creation (Pod with a single container)
+apiVersion: v1   #This is api version
+kind: Pod   #This is type of kubernetes controller, and it is Pod
 metadata:
-  name: nginx
+  name: nginx   #This is name of the Pod
 spec:
   containers:
-    - name: nginx
+    - name: nginx   #This is container name
       image: nginx:1.19
       ports:
         - containerPort: 80
-
+--- #kubernetes will understand --- as different config file
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-mc   #creating pod with multi containers
+spec:
+  containers:
+    - name: nginx   #contianer1
+      image: nginx:1.19
+      ports:
+        - containerPort: 80
+    - name: debug   #container2
+      image: rkalluru/debug
