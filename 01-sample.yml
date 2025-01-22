@@ -8,3 +8,4 @@ spec:
       image: nginx:1.19
       ports:
         - containerPort: 80
+
