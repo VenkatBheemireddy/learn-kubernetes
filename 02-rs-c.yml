@@ -27,22 +27,5 @@ spec:
     spec:   #this is the spec of container, we have seen in Pod template
       containers:
         - name: php-redis
-          image: nginx
----
-#creating Pod with same label name "frontend"
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx-1
-  labels:
-    app: guestbook
-    tier: frontend
-spec:
-  containers:
-    - name: nginx
-      image: nginx:1.19    # Run-1 = 1.19
-     #image: nginx:1:15    # Run-2 = 1:15
-      ports:
-        - containerPort: 80
-
-
+          image: nginx:1.14.2    # Run-1 = 1.14.2
+         #image: nginx:1:15      # Run-2 = 1:15
