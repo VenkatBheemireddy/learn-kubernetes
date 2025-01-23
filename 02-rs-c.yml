@@ -1,9 +1,12 @@
-#In the below example we are creating both replicaset with 3 pods with name frontend and one pod
-#with name nginx-1 but both rs and Pod are have same label/tier as frontend. So, the replica
-#contrrollerr will look for same label and the number of replicas, and will create the pods accordingly.
-#but it will not create more than 3 pods as per below example. You can notice this in K9S tool.
-
-#Creation of Pods using ReplicaSet
+#This code is to show the limitation of the ReplicaSet
+#ReplicaSet will not allow to modify some of the things like configuration changes.
+#ReplicaSet will bother about only the number of Replicas are running or not
+#ReplicaSet will not bother about the configuration changes done to the pod
+#In the below example, we are creating 3 pods with nginx:1.14.2 in Run-1
+#Later, we are updating the configuration to nginx:1:15 in Run-2
+#But ReplicaSet will not re-create the pods with new configuration
+#Instead it will continue with old configuration pods
+#You can notice this in K9S tool
 apiVersion: apps/v1
 kind: ReplicaSet   #type of controller
 metadata:
@@ -37,7 +40,8 @@ metadata:
 spec:
   containers:
     - name: nginx
-      image: nginx:1.19
+      image: nginx:1.19    # Run-1 = 1.19
+     #image: nginx:1:15    # Run-2 = 1:15
       ports:
         - containerPort: 80
 
