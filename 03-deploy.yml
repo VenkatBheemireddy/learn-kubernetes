@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: nginx  #pod container name
-          image: nginx:1.14.2    #Run1
-         #image: nginx:1:15      #Run2 - Here the pods will be re-created with 1:15 config
+         #image: nginx:1.14.2    #Run1
+          image: nginx:1:15      #Run2 - Here the pods will be re-created with 1:15 config
           ports:
             - containerPort: 80
