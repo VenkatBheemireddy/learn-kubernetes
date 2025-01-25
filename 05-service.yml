@@ -1,3 +1,4 @@
+#code to create ClusterIP service
 apiVersion: v1
 kind: Service
 metadata:
@@ -11,6 +12,7 @@ spec:
       port: 80
       targetPort: 80
 ---
+#code to create Pod
 apiVersion: v1
 kind: Pod
 metadata:
@@ -24,3 +26,33 @@ spec:
       image: nginx:1.19
       ports:
         - containerPort: 80
+---
+#code to create NodePort service
+apiVersion: v1
+kind: Service   #Says it is a service
+metadata:
+  name: nginx-np   #name of the service
+spec:
+  type: NodePort   #type of the service
+  selector:
+    appName: nginx
+    demoFor: ClusterIP  #we are keeping the same name so that same name labels will get pickup
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+#code to create LoadBalancer service
+apiVersion: v1
+kind: Service   #Says it is a service
+metadata:
+  name: nginx-lb   #name of the service
+spec:
+  type: LoadBalancer   #type of the service
+  selector:
+    appName: nginx
+    demoFor: ClusterIP  #we are keeping the same name so that same name labels will get pickup
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
