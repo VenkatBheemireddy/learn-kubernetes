@@ -1,25 +1,11 @@
-#code to create ClusterIP service
-apiVersion: v1
-kind: Service
-metadata:
-  name: nginx-cip
-spec:
-  selector:
-    appName: nginx
-    demoFor: ClusterIP
-  ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
----
-#code to create Pod
+#code to create NodePort Pod
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx-cip
+  name: nginx-np
   labels:
     appName: nginx
-    demoFor: ClusterIP
+    demoFor: NodePort
 spec:
   containers:
     - name: nginx
@@ -36,7 +22,7 @@ spec:
   type: NodePort   #type of the service
   selector:
     appName: nginx
-    demoFor: ClusterIP  #we are keeping the same name so that same name labels will get pickup
+    demoFor: NodePort  #we are keeping the same name so that same name labels will get pickup
   ports:
     - protocol: TCP
       port: 80
