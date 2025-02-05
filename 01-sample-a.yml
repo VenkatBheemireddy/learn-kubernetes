@@ -1,0 +1,11 @@
+#Kubernetes Pod Creation (Pod with a single container)
+apiVersion: v1   #This is api version
+kind: Pod   #This is type of kubernetes controller, and it is Pod
+metadata:
+  name: nginx   #This is name of the Pod
+spec:
+  containers:
+    - name: nginx   #This is container name
+      image: nginx:1.14.2
+      ports:
+        - containerPort: 80
