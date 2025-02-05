@@ -6,7 +6,7 @@ metadata:
 spec:
   containers:
     - name: nginx   #This is container name
-      image: nginx:1.19
+      image: nginx:1.14.2
       ports:
         - containerPort: 80
 --- #kubernetes will understand --- as different config file
