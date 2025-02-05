@@ -11,3 +11,5 @@ spec:
       imagePullPolicy: IfNotPresent
 #      nodeSelector:
 #        disktype: ssd
+
+#kubectl label nodes aks-default-21207884-vmss000001 disktyp=ssd
