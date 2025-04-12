@@ -7,7 +7,7 @@
 apiVersion: apps/v1
 kind: ReplicaSet   #type of controller
 metadata:
-  name: frontend   #name of the replicaset
+  name: rs-nginx   #name of the replicaset
   labels:
     app: guestbook
     tier: frontend
@@ -30,7 +30,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx-1
+  name: pod-nginx
   labels:
     app: guestbook
     tier: frontend
