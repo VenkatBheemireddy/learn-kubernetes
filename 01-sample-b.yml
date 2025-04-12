@@ -1,7 +1,7 @@
 #Kubernetes Pod Creation (Pod with a single container)
 apiVersion: v1   #This is api version
 kind: Pod   #This is type of kubernetes controller, and it is Pod
-metadata:
+metadata:   #metadata is a label block
   name: nginx   #This is name of the Pod
 spec:
   containers:
@@ -13,7 +13,7 @@ spec:
 #Multi container Pod creation
 apiVersion: v1
 kind: Pod
-metadata:
+metadata:         #metadata is a label block
   name: demo-mc   #creating pod with multi containers
 spec:
   containers:
