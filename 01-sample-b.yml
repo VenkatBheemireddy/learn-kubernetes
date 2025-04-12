@@ -2,7 +2,7 @@
 apiVersion: v1   #This is api version
 kind: Pod   #This is type of kubernetes controller, and it is Pod
 metadata:   #metadata is a label block
-  name: nginx   #This is name of the Pod
+  name: nginx1   #This is name of the Pod
 spec:
   containers:
     - name: nginx   #This is container name
