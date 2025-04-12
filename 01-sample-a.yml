@@ -5,8 +5,10 @@ metadata:
   name: nginx   #This is name of the Pod
 spec:
   containers:
-    - name: nginx1   #This is container name
-      image: nginx:1.14.2
+    - name: nginx   #This is container name
+  # - name: nginx   #This is container name
+  #   image: nginx:1.14.2
+      image: nginx:1.19
       ports:
         - containerPort: 80
 
