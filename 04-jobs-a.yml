@@ -2,9 +2,9 @@
 apiVersion: batch/v1
 kind: CronJob
 metadata:
-  name: hello
+  name: hello   #name of the job
 spec:
-  schedule: "* * * * *"
+  schedule: "* * * * *"    # to run the job at every minute, for more details http://crontab.guru
   jobTemplate:
     spec:
       template:
