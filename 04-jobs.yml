@@ -2,7 +2,7 @@
 apiVersion: batch/v1
 kind: Job   #type of controller
 metadata:
-  name: pi   #name of the job
+  name: job-pi   #name of the job
 spec:
   template:   #contianer template
     spec:
