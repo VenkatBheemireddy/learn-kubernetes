@@ -17,7 +17,7 @@ spec:
 apiVersion: v1
 kind: Service   #Says it is a service
 metadata:
-  name: nginx-lb-sve   #name of the service
+  name: nginx-lb-svc   #name of the service
 spec:
   type: LoadBalancer   #type of the service
   selector:
