@@ -1,0 +1,32 @@
+#code to create ClusterIP service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-cip-svc
+spec:
+  selector:
+    appName: nginx
+    demoFor: ClusterIP
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: nginx-ingress-svc
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx-cip   #this is the backend service
+                port:
+                  number: 80
