@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: debug1
+  name: env-demo
 spec:
   containers:
     - name: debug
