@@ -16,7 +16,7 @@ spec:
     - name: debug
       image: rkalluru/debug
       env:                       # Define the environment variable
-        - name: POD-URL          # Notice that the case is different here
+        - name: URL          # Notice that the case is different here
           valueFrom:
             configMapKeyRef:
               name: cm-demo      # This is the ConfigMap name to refer.
