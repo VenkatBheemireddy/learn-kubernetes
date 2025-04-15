@@ -13,14 +13,14 @@ metadata:
   name: cm-demo-1
 spec:
   containers:
-    - name: debug
-      image: rkalluru/debug
-      env:                       # Define the environment variable
-        - name: URL          # Notice that the case is different here
-          valueFrom:
-            configMapKeyRef:
-              name: cm-demo      # This is the ConfigMap name to refer.
-              key: URL           # This is the key to fetch from ConfigMap.
+  - name: debug
+    image: rkalluru/debug
+    env:                       # Define the environment variable
+      - name: URL          # Notice that the case is different here
+        valueFrom:
+          configMapKeyRef:
+            name: cm-demo      # This is the ConfigMap name to refer.
+            key: URL           # This is the key to fetch from ConfigMap.
 ---
 apiVersion: v1
 kind: Pod
@@ -28,8 +28,8 @@ metadata:
   name: cm-demo-2
 spec:
   containers:
-    - name: debug
-      image: rkalluru/debug
-      envFrom:                       # Define the environment variable
-        configMapKeyRef:
+  - name: debug
+    image: rkalluru/debug
+    envFrom:                       # Define the environment variable
+      - configMapKeyRef:
           name: cm-demo      # This is the ConfigMap name to refer.
