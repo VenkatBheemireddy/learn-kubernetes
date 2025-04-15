@@ -6,4 +6,8 @@ spec:
   containers:
     - name: debug
       image: rkalluru/debug
+      env:
+        - name: URL
+          value: google.com
+
 
