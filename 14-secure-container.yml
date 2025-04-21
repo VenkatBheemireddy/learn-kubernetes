@@ -24,7 +24,7 @@ spec:
           cpu: 300m
           memory: 512Mi
       securityContext:
-        allowPrivilegeEscalation: false
+        allowPrivilegeEscalation: false  #means, this pod is not allowed to have any extra privileges in the system
         readOnlyRootFilesystem: true
         seccompProfile:
           type: RuntimeDefault
