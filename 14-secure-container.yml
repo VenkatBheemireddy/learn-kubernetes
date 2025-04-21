@@ -35,3 +35,23 @@ spec:
       capabilities:
         drop:
           - ALL
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: debug1-13-np
+  namespace: example
+  labels:
+    podName: debug1-13-np
+spec:
+  limits:
+    - default: # this section defines default limits
+        cpu: 300m
+      defaultRequest: # this section defines default requests
+        cpu: 200m
+      max: # max and min define the limit range
+        cpu: 300m
+      min:
+        cpu: 200m
+      type: Container
+---
