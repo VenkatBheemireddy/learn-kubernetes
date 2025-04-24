@@ -77,7 +77,7 @@ spec:
             - name: SCHEMA_FILE
               value: "db/app-user.sql"
           envFrom:
-            - secretRef:
+            - configMapRef:
                 name: shipping
       restartPolicy: Never
   backoffLimit: 1
@@ -96,7 +96,7 @@ spec:
             - name: SCHEMA_FILE
               value: "db/schema.sql"
           envFrom:
-            - secretRef:
+            - configMapRef:
                 name: shipping
       restartPolicy: Never
   backoffLimit: 1
@@ -115,7 +115,7 @@ spec:
             - name: SCHEMA_FILE
               value: "db/master-data.sql"
           envFrom:
-            - secretRef:
+            - configMapRef:
                 name: shipping
       restartPolicy: Never
   backoffLimit: 1
