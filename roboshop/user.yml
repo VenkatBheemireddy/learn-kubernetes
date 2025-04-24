@@ -45,7 +45,7 @@ spec:
           ports:
             - containerPort: 8080
           envFrom:
-            - secretRef:
+            - configMapRef:
                 name: user
 ---
 apiVersion: v1
