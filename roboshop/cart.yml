@@ -1,27 +1,27 @@
 ### Using config map to fetch environment variables
- apiVersion: v1
- kind: ConfigMap
- metadata:
-   name: cart
- data:
-   REDIS_HOST: redis-dev.azdevopsv82.online
-   CATALOGUE_HOST: catalogue
-   CATALOGUE_PORT: "8080"
----
-#apiVersion: external-secrets.io/v1beta1
-#kind: ExternalSecret
-#metadata:
-#  name: cart
-#spec:
-#  refreshInterval: "5s"
-#  secretStoreRef:
-#    name: vault-backend
-#    kind: SecretStore
-#  target:
-#    name: cart
-#  dataFrom:
-#    - extract:
-#        key: cart
+# apiVersion: v1
+# kind: ConfigMap
+# metadata:
+#   name: cart
+# data:
+#   REDIS_HOST: redis-dev.azdevopsv82.online
+#   CATALOGUE_HOST: catalogue
+#   CATALOGUE_PORT: "8080"
+#---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: cart
+spec:
+  refreshInterval: "5s"
+  secretStoreRef:
+    name: vault-backend
+    kind: SecretStore
+  target:
+    name: cart    ### Store the fetched cart secret details on kubernetes
+  dataFrom:
+    - extract:
+        key: cart   ### Fetch cart secret details from vault present under robosho-dev
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -45,7 +45,7 @@ spec:
           ports:
             - containerPort: 8080
           envFrom:
-            - configMapRef:
+            - secretRef:
                 name: cart
 ---
 apiVersion: v1

@@ -1,30 +1,30 @@
 ### Using config map to fetch environment variables
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: catalogue
-data:
-  "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/catalogue"
-  "DB_HOST": "mongodb-dev.azdevopsv82.online"
-  "DB_TYPE": "mongo"
-  "MONGO": "true"
-  "MONGO_URL": "mongodb://mongodb-dev.azdevopsv82.online:27017/catalogue"
-  "SCHEMA_FILE": "db/master-data.js"
----
-#apiVersion: external-secrets.io/v1beta1
-#kind: ExternalSecret
+#apiVersion: v1
+#kind: ConfigMap
 #metadata:
 #  name: catalogue
-#spec:
-#  refreshInterval: "5s"
-#  secretStoreRef:
-#    name: vault-backend
-#    kind: SecretStore
-#  target:
-#    name: catalogue
-#  dataFrom:
-#    - extract:
-#        key: catalogue
+#data:
+#  "APP_GIT_URL": "https://github.com/roboshop-devops-project-v3/catalogue"
+#  "DB_HOST": "mongodb-dev.azdevopsv82.online"
+#  "DB_TYPE": "mongo"
+#  "MONGO": "true"
+#  "MONGO_URL": "mongodb://mongodb-dev.azdevopsv82.online:27017/catalogue"
+#  "SCHEMA_FILE": "db/master-data.js"
+#---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: catalogue
+spec:
+  refreshInterval: "5s"
+  secretStoreRef:
+    name: vault-backend
+    kind: SecretStore
+  target:
+    name: catalogue
+  dataFrom:
+    - extract:
+        key: catalogue
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -48,7 +48,7 @@ spec:
           ports:
             - containerPort: 8080
           envFrom:
-            - configMapRef:
+            - secretRef:
                 name: catalogue
 ---
 apiVersion: v1
@@ -74,7 +74,7 @@ spec:
         - name: catalogue-schema
           image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
           envFrom:
-            - configMapRef:
+            - secretRef:
                 name: catalogue
       restartPolicy: Never
   backoffLimit: 1
