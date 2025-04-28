@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Values.podName }}   ### we will pass this value dynamically
+spec:
+  containers:
+    - name: nginx
+      image: {{ .Values.image }}   ### we will pass this value from values.yaml file
+      ports:
+        - containerPort: 80
+---
