@@ -7,4 +7,8 @@ favorite:
   drink: coke
   food: fries
 
+extraPods:
+  - nginx1
+  - nginx2
+
 
