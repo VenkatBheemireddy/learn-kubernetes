@@ -1,0 +1,11 @@
+### this is example to access files inside templates
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: load-file-configmap
+data:
+  {{- $files := .Files }}
+    {{- range tuple "sample" }}
+    {{ . }}: |-
+    {{ $files.Get . }}
+    {{- end }}
