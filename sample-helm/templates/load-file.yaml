@@ -6,6 +6,6 @@ metadata:
 data:
   {{- $files := .Files }}
     {{- range tuple "sample" }}
-    {{ . }}: |-
+    {{ . }}:
     {{ $files.Get . }}
     {{- end }}
